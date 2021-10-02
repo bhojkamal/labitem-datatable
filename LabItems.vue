@@ -45,8 +45,6 @@
                 tableData.value = data
                 pagination.value = { ...pagination.value, page: query.page, total: totalItems, ...paginationResponse }
             }
-            const formatItem = (item) => Array.isArray(item) ? item[0] : item
-            const formatUrl = (url) => url.startsWith("http") ? url : `http://${url}`
             const deleteLabitem = (id) => {
                 if(confirm('Are you sure to delete this record?'))
                 axios.get('/sanctum/csrf-cookie').then(response => {
@@ -60,7 +58,7 @@
                     });
                 })
             }
-            return { tableData, pagination, auth_user_type, loadData, formatItem, formatUrl, deleteLabitem }
+            return { tableData, pagination, auth_user_type, loadData, deleteLabitem }
         },
     }
     export default Paginated;
